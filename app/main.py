@@ -26,8 +26,8 @@ app = Flask(__name__)
 def inicial():
     return "Caminho raiz, use /predict e faça o input dos dados para predizer a estrutura"
 
-@app.route("/predict/<experimentalTechnique>/<resolution>/<structureMolecularWeight>/<crystallizationTempK>/<phValue>")
-def predict_label(experimentalTechnique, resolution, structureMolecularWeight, crystallizationTempK, phValue):
+@app.route("/predict/<experimentalTechnique>/<resolution>/<structureMolecularWeight>/<crystallizationTempK>/<densityPercentSol>/<phValue>")
+def predict_label(experimentalTechnique, resolution, structureMolecularWeight, crystallizationTempK, densityPercentSol, phValue):
 
     # Recebe os dados da url do endpoint e prepara para previsão
     dados = {
@@ -35,6 +35,7 @@ def predict_label(experimentalTechnique, resolution, structureMolecularWeight, c
         'resolution': [resolution],
         'structureMolecularWeight': [structureMolecularWeight],
         'crystallizationTempK': [crystallizationTempK],
+        'densityPercentSol': [densityPercentSol],
         'phValue': [phValue]
     }
     df_predicao = pd.DataFrame(dados)
