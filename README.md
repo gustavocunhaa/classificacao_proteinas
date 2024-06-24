@@ -1,9 +1,13 @@
-# Classificador de tipos de proteínas
+# Data lake - Estruturas de proteínas
 
-**Objetivo:** Construir um modelo de machine learning que, ao receber dados de experimentos laboratoriais, consiga prever qual o tipo de proteína provavelmente está envolvida.
+Repositório contendo o projeto de um pequeno data lake com um conjunto de dados sobre proteínas, disponibilizados pelo https://www.rcsb.org/.
 
-**Fonte de dados:** Conjunto de dados sobre proteínas (https://www.rcsb.org/).
+> Dados disponíveis em -> https://www.kaggle.com/datasets/shahir/protein-data-set
 
-Dados disponíveis em -> https://www.kaggle.com/datasets/shahir/protein-data-set
 
-**Resultados:** Decission Tree com 91% de precisão em dizer qual o tipo da proteína em um universo de 5 diferentes tipos. Aplicação em Flask construída facilitar a geração de prediçeões.
+# Estrutura do repo
+
+- **app**: Contém as aplicações de consumo final do dado
+- **data**: Aramazenamento dos arquivos de dados processados utilizados
+- **explore**: Notebooks de exploração/experimentação
+- **src**: Local com os recursos utilizados pelas aplicações
