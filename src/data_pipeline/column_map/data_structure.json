@@ -1,0 +1,16 @@
+{
+    "structureId" : "str",
+    "classification" : "str",
+    "experimentalTechnique" : "str",
+    "macromoleculeType" : "str",
+    "residueCount" : "int",
+    "resolution": "float",
+    "structureMolecularWeight" : "float",
+    "crystallizationMethod" : "str",
+    "crystallizationTempK" : "float",
+    "densityMatthews" : "float",
+    "densityPercentSol" : "float",
+    "pdbxDetails" : "str",
+    "phValue" : "float",
+    "publicationYear" : "int"
+}
