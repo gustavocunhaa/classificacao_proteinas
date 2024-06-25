@@ -49,7 +49,7 @@ class TrustedProcess():
         df_quality = pd.DataFrame()
         for column in key_dict:
             column_type = key_dict[column]
-            column_name = f"{column_type.upper()}_{column.upper()}"
+            column_name = f"{column.upper()}_{column_type.upper()}"
             df_quality[column_name] = df[column].dropna().astype(column_type)
         return df_quality
 
