@@ -31,3 +31,5 @@ archive.zip
 
 # data files
 *.csv
+*.parquet
+*.zip
