@@ -2,32 +2,41 @@ from pathlib import Path
 import os
 
 import zipfile
-import pandas as pd
 import json
+
+import pandas as pd
+import awswrangler as wr
 
 
 # CONSTANTS
 ROOT_PATH = os.getcwd()
 RAW_PATH = Path(f"{ROOT_PATH}/data/raw")
 TRUSTED_PATH = Path(f"{ROOT_PATH}/data/trusted")
+S3_RAW_DATA = 's3://data-lake-protein/raw/dados.zip'
+S3_TRUSTED_URI = 's3://data-lake-protein/trusted'
 COLUMN_MAP_PATH = Path(f"{ROOT_PATH}/src/data_pipeline/column_map")
 
 
 # MAKE RAW TO TRSUTED PROCESS
 class TrustedProcess():
 
-    def __init__(self, 
-                 raw_folder, raw_data_file, 
+    def __init__(self,
+                 s3_raw_path, raw_folder, raw_data_file, 
                  quality_folder, quality_file, 
-                 trusted_folder, trusted_data_file):
+                 s3_trusted_path, trusted_folder, trusted_data_file):
         
+        self.s3_raw_path = s3_raw_path
         self.raw_folder = raw_folder
         self.raw_data_file = raw_data_file
         self.quality_folder = quality_folder
         self.quality_file = quality_file
+        self.s3_trusted_path = s3_trusted_path
         self.trusted_folder = trusted_folder
         self.trusted_data_file = trusted_data_file
     
+    def download_s3_file(self):
+        return wr.s3.download(path=self.s3_raw_path, local_file=os.path.join(self.raw_folder, 'dados.zip'))
+
     def unzip_file(self):
         raw_folder = self.raw_folder
         zip_file = os.path.join(raw_folder, 'dados.zip')
@@ -55,9 +64,11 @@ class TrustedProcess():
 
     def save_parquet(self, df: pd.DataFrame):
         path_save = os.path.join(self.trusted_folder, self.trusted_data_file)
-        return df.to_parquet(path_save, index=False) 
+        df.to_parquet(path_save, index=False)
+        return wr.s3.upload(local_file=path_save, path=f'{self.s3_trusted_path}/{self.trusted_data_file}')
     
     def run(self):
+        self.download_s3_file()
         self.unzip_file()
         df = self.read_csv_files()
         json_quality = self.open_quality_artifact()
@@ -83,10 +94,12 @@ config_dict = {
 # RUN
 for file_config in config_dict:
     TrustedProcess(
+        s3_raw_path=S3_RAW_DATA,
         raw_folder=RAW_PATH,           
         raw_data_file=config_dict[file_config]['raw_csv_file'],
         quality_folder=COLUMN_MAP_PATH,
         quality_file=config_dict[file_config]['quality_json_file'],
+        s3_trusted_path=S3_TRUSTED_URI,
         trusted_folder=TRUSTED_PATH,
         trusted_data_file=config_dict[file_config]['trusted_parquet_file']
     ).run()
