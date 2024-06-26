@@ -1,0 +1,7 @@
+{
+    "structureId" : "str",
+    "chainId" : "str",
+    "sequence" : "str",
+    "residueCount" : "int",
+    "macromoleculeType" : "str"
+}
