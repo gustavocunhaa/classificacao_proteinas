@@ -11,7 +11,7 @@ Repositório contendo o projeto de um pequeno data lake com um conjunto de dados
 # Estrutura do projeto
 
 - **app**: Contém as aplicações de consumo final do dado
-- **data**: Aramazenamento dos arquivos de dados processados utilizados
+- **data**: Pasta para armazenamento de arquivos de dados temporários processados
 - **docs**: Documentações do projeto
 - **explore**: Notebooks de exploração/experimentação
 - **src**: Local com os recursos utilizados pelas aplicações
