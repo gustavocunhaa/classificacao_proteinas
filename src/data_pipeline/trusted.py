@@ -1,20 +1,8 @@
-from pathlib import Path
 import os
-
 import zipfile
 import json
-
 import pandas as pd
 import awswrangler as wr
-
-
-# CONSTANTS
-ROOT_PATH = os.getcwd()
-RAW_PATH = Path(f"{ROOT_PATH}/data/raw")
-TRUSTED_PATH = Path(f"{ROOT_PATH}/data/trusted")
-S3_RAW_DATA = 's3://data-lake-protein/raw/dados.zip'
-S3_TRUSTED_URI = 's3://data-lake-protein/trusted'
-COLUMN_MAP_PATH = Path(f"{ROOT_PATH}/src/data_pipeline/column_map")
 
 
 # MAKE RAW TO TRSUTED PROCESS
@@ -74,32 +62,3 @@ class TrustedProcess():
         json_quality = self.open_quality_artifact()
         df_quality = self.quality(df, json_quality)
         return self.save_parquet(df_quality)
-
-
-# MAIN PROCESS
-# CONFIGS
-config_dict = {
-    'structure': {
-        'raw_csv_file': 'pdb_data_no_dups.csv',
-        'quality_json_file' : 'data_structure.json',
-        'trusted_parquet_file': 'data_structure.parquet' 
-    },
-    'sequence': {
-        'raw_csv_file': 'pdb_data_seq.csv',
-        'quality_json_file' : 'data_sequence.json',
-        'trusted_parquet_file': 'data_sequence.parquet' 
-    }
-}
-
-# RUN
-for file_config in config_dict:
-    TrustedProcess(
-        s3_raw_path=S3_RAW_DATA,
-        raw_folder=RAW_PATH,           
-        raw_data_file=config_dict[file_config]['raw_csv_file'],
-        quality_folder=COLUMN_MAP_PATH,
-        quality_file=config_dict[file_config]['quality_json_file'],
-        s3_trusted_path=S3_TRUSTED_URI,
-        trusted_folder=TRUSTED_PATH,
-        trusted_data_file=config_dict[file_config]['trusted_parquet_file']
-    ).run()

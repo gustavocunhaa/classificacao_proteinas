@@ -1,16 +1,11 @@
 from pathlib import Path
 import os
 import json
-
 import pandas as pd
 import awswrangler as wr
 
 # CONSTANTS
 ROOT_PATH = os.getcwd()
-TRUSTED_PATH = Path(f"{ROOT_PATH}/data/trusted")
-REFINED_PATH = Path(f"{ROOT_PATH}/data/refined")
-S3_TRUSTED_URI = 's3://data-lake-protein/trusted'
-S3_REFINED_URI = 's3://data-lake-protein/refined'
 TABLE_CONFIG_PATH = Path(f"{ROOT_PATH}/src/data_pipeline/tables/tables_config.json")
 
 
@@ -65,13 +60,3 @@ class RefinedProcess():
                                                    id_single=config_table[table]['id_single'] 
                                                    )
             self.save_parquet(df=df_refined, file_name=table) 
-
-# MAIN PROCESS
-# RUN
-RefinedProcess(
-    s3_trusted_path=S3_TRUSTED_URI,
-    trusted_folder=TRUSTED_PATH,
-    trusted_data_files=['data_sequence.parquet', 'data_structure.parquet'],
-    s3_refined_path=S3_REFINED_URI,
-    refined_folder=REFINED_PATH,
-).run()
