@@ -15,3 +15,4 @@ Repositório contendo o projeto de um pequeno data lake com um conjunto de dados
 - **docs**: Documentações do projeto
 - **explore**: Notebooks de exploração/experimentação
 - **src**: Local com os recursos utilizados pelas aplicações
+- **example.env**: Local com o exemplo do arquivo .env demonstrando como armazenar as credenciais utilizadas pelo projeto
