@@ -6,7 +6,7 @@ Repositório contendo o projeto de um pequeno data lake com um conjunto de dados
 
 # Conteúdo:
 1. Pipeline de extração, obtenção e disponibilização do dado para consumo
-2.   
+2. 
 
 # Estrutura do projeto
 
@@ -16,3 +16,12 @@ Repositório contendo o projeto de um pequeno data lake com um conjunto de dados
 - **explore**: Notebooks de exploração/experimentação
 - **src**: Local com os recursos utilizados pelas aplicações
 - **example.env**: Local com o exemplo do arquivo .env demonstrando como armazenar as credenciais utilizadas pelo projeto
+
+
+# Arquitetura do pipeline de dados
+
+- Utilização do AWS s3 para armazenar os arquivos pelas camadas
+- Contrução em três níveis de granularidade do dado
+- Banco SQL final para consumo do dado tratado
+
+![arch](./docs/img/arch.png)
