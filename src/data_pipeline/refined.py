@@ -4,21 +4,18 @@ import json
 import pandas as pd
 import awswrangler as wr
 
-# CONSTANTS
-ROOT_PATH = os.getcwd()
-TABLE_CONFIG_PATH = Path(f"{ROOT_PATH}/src/data_pipeline/tables/tables_config.json")
-
 
 # MAKE TRSUTED TO REFINED PROCESS
 class RefinedProcess():
 
     def __init__(self,  
                  s3_trusted_path, trusted_folder, trusted_data_files,
-                 s3_refined_path, refined_folder):
+                 config_file_path, s3_refined_path, refined_folder):
         
         self.s3_trusted_path = s3_trusted_path
         self.trusted_folder = trusted_folder
         self.trusted_data_files = trusted_data_files
+        self.config_file_path = config_file_path 
         self.s3_refined_path = s3_refined_path
         self.refined_folder = refined_folder
     
@@ -50,7 +47,7 @@ class RefinedProcess():
         for file in self.trusted_data_files:
             self.download_s3_files(file)
 
-        with open(TABLE_CONFIG_PATH) as j:
+        with open(self.config_file_path) as j:
             config_table = json.load(j)
 
         for table in config_table:

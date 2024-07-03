@@ -23,11 +23,11 @@ class TrustedProcess():
         self.trusted_data_file = trusted_data_file
     
     def download_s3_file(self):
-        return wr.s3.download(path=self.s3_raw_path, local_file=os.path.join(self.raw_folder, 'dados.zip'))
+        return wr.s3.download(path=self.s3_raw_path, local_file=os.path.join(self.raw_folder, 'protein-data-set.zip'))
 
     def unzip_file(self):
         raw_folder = self.raw_folder
-        zip_file = os.path.join(raw_folder, 'dados.zip')
+        zip_file = os.path.join(raw_folder, 'protein-data-set.zip')
         z = zipfile.ZipFile(zip_file)
         return z.extractall(raw_folder) 
 
