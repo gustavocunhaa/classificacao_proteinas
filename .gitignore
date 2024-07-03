@@ -33,3 +33,4 @@ archive.zip
 *.csv
 *.parquet
 *.zip
+.env
