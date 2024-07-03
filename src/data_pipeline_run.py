@@ -5,13 +5,21 @@ from pathlib import Path
 from data_pipeline.raw     import RawProcess
 from data_pipeline.trusted import TrustedProcess
 from data_pipeline.refined import RefinedProcess
-
+from data_pipeline.consume import ConsumeLayer
 
 # LOAD CREDENTIALS FOR .env
 load_dotenv()
 kaggle_credentials = {
     'kaggle_user': os.getenv("KAGGLE_USERNAME"),
     'kaggle_password' : os.getenv("KAGGLE_PASSWORD")
+}
+
+mysql_credentials = {
+    'user': os.getenv("MYSQL_USER"),
+    'pwd': os.getenv("MYSQL_PASSWORD"),
+    'host': os.getenv("MYSQL_HOST"),
+    'port': os.getenv("MYSQL_PORT"),
+    'db': os.getenv("MYSQL_DB")
 }
 
 # CONSTANTS
@@ -73,4 +81,13 @@ RefinedProcess(
     config_file_path=TABLE_CONFIG_PATH,
     s3_refined_path=S3_REFINED_URI,
     refined_folder=REFINED_PATH,
+).run()
+
+ConsumeLayer(
+    user=mysql_credentials['user'],
+    password=mysql_credentials['pwd'],
+    host=mysql_credentials['host'],
+    port=mysql_credentials['port'],
+    database=mysql_credentials['db'],
+    s3_refined_path=S3_REFINED_URI
 ).run()
