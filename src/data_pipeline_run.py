@@ -9,25 +9,23 @@ from data_pipeline.refined import RefinedProcess
 
 # LOAD CREDENTIALS FOR .env
 load_dotenv()
-
 kaggle_credentials = {
     'kaggle_user': os.getenv("KAGGLE_USERNAME"),
     'kaggle_password' : os.getenv("KAGGLE_PASSWORD")
 }
 
 # CONSTANTS
-
 ROOT_PATH = os.getcwd()
 RAW_PATH = Path(f"{ROOT_PATH}/data/raw")
-S3_RAW_DATA = 's3://data-lake-protein/raw/protein-data-set.zip'
-S3_TRUSTED_URI = 's3://data-lake-protein/trusted'
-COLUMN_MAP_PATH = Path(f"{ROOT_PATH}/src/data_pipeline/column_map")
-
 TRUSTED_PATH = Path(f"{ROOT_PATH}/data/trusted")
-S3_TRUSTED_URI = 's3://data-lake-protein/trusted'
+REFINED_PATH = Path(f"{ROOT_PATH}/data/refined")
 
 TABLE_CONFIG_PATH = Path(f"{ROOT_PATH}/src/data_pipeline/tables/tables_config.json")
-REFINED_PATH = Path(f"{ROOT_PATH}/data/refined")
+COLUMN_MAP_PATH = Path(f"{ROOT_PATH}/src/data_pipeline/column_map")
+
+S3_RAW_URI = 's3://data-lake-protein/raw'
+S3_RAW_DATA = f'{S3_RAW_URI}/protein-data-set.zip'
+S3_TRUSTED_URI = 's3://data-lake-protein/trusted'
 S3_REFINED_URI = 's3://data-lake-protein/refined'
 
 
@@ -52,7 +50,7 @@ RawProcess(
     kaggle_credentials=kaggle_credentials,
     kaggle_dataset=dataset,
     raw_folder=RAW_PATH,
-    s3_raw_folder=S3_RAW_DATA
+    s3_raw_folder=S3_RAW_URI
 ).run()
 
 
