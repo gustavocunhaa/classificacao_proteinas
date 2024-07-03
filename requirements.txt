@@ -1,0 +1,4 @@
+awswrangler==3.8.0
+pandas==2.2.2
+python-dotenv==1.0.1
+kaggle==1.6.14
