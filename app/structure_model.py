@@ -12,7 +12,7 @@ MODEL_PATH = Path(f"{ROOT_PATH}/src/structure_protein_model/model/structure_prot
 model = pickle.load(open(MODEL_PATH, 'rb'))
 
 def normalize_data(data: dict):
-    df = pd.DataFrame(json.loads(data))
+    df = pd.DataFrame(json.loads(data), index=[0])
     norm = minmax_scale(df, (0,1))
     x = pd.DataFrame(norm, columns=df.columns.to_list())
     return x
