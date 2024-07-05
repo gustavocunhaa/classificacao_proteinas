@@ -9,7 +9,7 @@ Repositório contendo o projeto de um pequeno data lake com um conjunto de dados
   <img align="center" alt="python" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
   <img align="center" alt="pandas" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg">
   <img align="center" alt="aws" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg">
-  <img align="center" alt="s3" height="60" width="70" src="  https://cdn.worldvectorlogo.com/logos/amazon-s3-simple-storage-service.svg ">
+  <img align="center" alt="s3" height="60" width="70" src="https://cdn.worldvectorlogo.com/logos/amazon-s3-simple-storage-service.svg">
   <img align="center" alt="mysql" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg">
   <img align="center" alt="sklearn" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg"> 
   <img align="center" alt="xgboost" height="60" width="70" src="https://www.intel.com/content/dam/www/central-libraries/us/en/images/2022-11/xgboost-logo-rwd.png.rendition.intel.web.480.360.png">
