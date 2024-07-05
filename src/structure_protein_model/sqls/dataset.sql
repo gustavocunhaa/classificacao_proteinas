@@ -1,5 +1,10 @@
 select 
-    te.CLASSIFICATION_STR as y,
+    case 
+		when te.CLASSIFICATION_STR = 'HYDROLASE' then 0
+        when te.CLASSIFICATION_STR = 'TRANSFERASE' then 1
+        when te.CLASSIFICATION_STR = 'OXIDOREDUCTASE' then 2
+        when te.CLASSIFICATION_STR = 'LYASE' then 3
+	END as y,
     inf.CRYSTALLIZATIONTEMPK_FLOAT as temperatura_cristalizacao_k,
     inf.RESIDUECOUNT_INT as contagem_residuos,
     inf.RESOLUTION_FLOAT as medida_de_resolucao,
