@@ -42,11 +42,9 @@ class RefinedProcess():
         
         return df
     
-    def create_refined_table(self, df: pd.DataFrame, columns: list, id_name='STRUCTUREID_STR', id_single="False"):
+    def create_refined_table(self, df: pd.DataFrame, columns: list):
         df = df[columns] 
         df = df.dropna() 
-        if id_single == "True":
-            df.drop_duplicates(subset=id_name)
         colunas_str = [col for col in df.columns if col.endswith('STR')]
         df[colunas_str] = df[colunas_str].apply(lambda x: x.str.upper())
         return df
@@ -77,8 +75,7 @@ class RefinedProcess():
             try:
                 df_origen  = self.read_parquet_file(config_table[table]['origen_file'])
                 df_refined = self.create_refined_table(df=df_origen,
-                                                    columns=config_table[table]['columns_selected'],
-                                                    id_single=config_table[table]['id_single'] 
+                                                    columns=config_table[table]['columns_selected']
                                                     )
                 self.save_parquet(df=df_refined, file_name=table)
                 print(f"SUCESS: Creating {table} table")

@@ -1,7 +1,6 @@
 {
     "sequencia_estrutura": {
         "origen_file": "data_sequence.parquet",
-        "id_single": "True",
         "columns_selected": [
             "STRUCTUREID_STR",
             "SEQUENCE_STR"
@@ -9,7 +8,6 @@
     },
     "infos_estrutura": {
         "origen_file": "data_structure.parquet",
-        "id_single": "False",
         "columns_selected": [
             "STRUCTUREID_STR",
             "RESIDUECOUNT_INT",
@@ -21,7 +19,6 @@
     },
     "valores_analiticos": {
         "origen_file": "data_structure.parquet",
-        "id_single": "False",
         "columns_selected": [
             "STRUCTUREID_STR",
             "DENSITYMATTHEWS_FLOAT",
@@ -31,7 +28,6 @@
     },
     "tipo_estrutura": {
         "origen_file": "data_structure.parquet",
-        "id_single": "False",
         "columns_selected": [
             "STRUCTUREID_STR",
             "CLASSIFICATION_STR",
@@ -41,7 +37,6 @@
     },
     "detalhes_gerais": {
         "origen_file": "data_structure.parquet",
-        "id_single": "True",
         "columns_selected": [
             "STRUCTUREID_STR",
             "PDBXDETAILS_STR"
