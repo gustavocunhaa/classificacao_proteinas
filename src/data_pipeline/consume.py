@@ -58,7 +58,7 @@ class ConsumeLayer:
         print(f">>> Write table {table_name}")
         
         try:
-            df.to_sql(name=table_name, con=conn, index=False)
+            df.to_sql(name=table_name, con=conn, index=False, if_exists='replace')
             print(f"SUCESS: Table {table_name} created")
         except ValueError as e:
             print(f"ERROR: Table {table_name} created - {e}")
