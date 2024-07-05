@@ -6,7 +6,7 @@ Repositório contendo o projeto de um pequeno data lake com um conjunto de dados
 
 # Conteúdo:
 1. Pipeline de extração, obtenção e disponibilização do dado para consumo
-2. 
+2. Modelo de classificação da estrutura
 
 # Estrutura do projeto
 
