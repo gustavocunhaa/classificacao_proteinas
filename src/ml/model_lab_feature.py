@@ -33,8 +33,8 @@ test_size = 0.2
 model = DecisionTreeClassifier(random_state = 1337)
 splits = 5
 param_grid = {
-    "max_depth": [2, 3, 5, 10, 20],
-    "min_samples_leaf": [5, 10, 20, 50, 100],
+    "max_depth": [None, 2, 3, 5, 10, 20],
+    "min_samples_leaf": [2, 5, 10, 20, 50, 100],
     "criterion": ["gini", "entropy"]
 }
 metric = 'f1_weighted'
