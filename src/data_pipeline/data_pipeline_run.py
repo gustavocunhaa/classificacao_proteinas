@@ -2,10 +2,10 @@ from dotenv import load_dotenv
 import os
 from pathlib import Path
 
-from data_pipeline.raw     import RawProcess
-from data_pipeline.trusted import TrustedProcess
-from data_pipeline.refined import RefinedProcess
-from data_pipeline.consume import ConsumeLayer
+from layers.raw     import RawProcess
+from layers.trusted import TrustedProcess
+from layers.refined import RefinedProcess
+from layers.consume import ConsumeLayer
 
 # LOAD CREDENTIALS FOR .env
 load_dotenv()
