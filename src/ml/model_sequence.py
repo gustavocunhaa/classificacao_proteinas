@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-import pandas as pd
+from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.tree import DecisionTreeClassifier
 
@@ -28,16 +28,11 @@ MODEL_SAVE_PATH = Path(f"{ROOT_PATH}/src/ml/model")
 # PARAMS
 query = open(DATASET_PATH, 'r').read()
 model_name = 'sequence_feature'
-target = 'y'
 test_size = 0.2
-model = DecisionTreeClassifier(random_state = 1337)
-splits = 5
-param_grid = {
-    "max_depth": [None, 2, 3, 5, 10, 20],
-    "min_samples_leaf": [2, 5, 10, 20, 50, 100],
-    "criterion": ["gini", "entropy"]
-}
-metric = 'f1_weighted'
+model_pipeline = Pipeline([
+    ('vectorize', CountVectorizer()),
+    ('clf', DecisionTreeClassifier(random_state=1337))
+])
 
 # MAIN EXEC
 df = ReadDatabase(
@@ -49,18 +44,11 @@ df = ReadDatabase(
     data_query=query
 ).run()
 
-features = df['sequencia'].str.slice(0,5)
-vector = CountVectorizer()
-x = vector.fit_transform(features)
-
 TrainTestModel(
     model_name=model_name,
-    x=x,
-    y=df[target],
+    x=df['sequencia'],
+    y=df['y'],
     test_size=test_size,
-    model_params=param_grid,
-    n_splits=splits,
-    otimization_metric=metric,
-    model=model,
+    model=model_pipeline,
     path_save=MODEL_SAVE_PATH
 ).run()

@@ -60,6 +60,7 @@ TrainTestModel(
     x=x,
     y=df[target],
     test_size=test_size,
+    grid_search=True,
     model_params=param_grid,
     n_splits=splits,
     otimization_metric=metric,

@@ -11,14 +11,16 @@ class TrainTestModel():
 
     def __init__(self, model_name, 
                  x, y, test_size, 
-                 otimization_metric, model_params, n_splits,
-                 model, path_save
+                 model, path_save,
+                 grid_search = False,
+                 otimization_metric = None, model_params = None, n_splits = None
                  ):
         
         self.model_name = model_name
         self.x = x
         self.y = y
         self.test_size = test_size
+        self.grid_search = grid_search
         self.otimization_metric = otimization_metric
         self.model_params = model_params
         self.n_splits = n_splits
@@ -105,6 +107,11 @@ class TrainTestModel():
 
     def run(self):
         X_train, X_test, y_train, y_test = self.split_data()
-        best_model = self.search_model_params(X_train,y_train)
-        model_fit, results = self.train_evalute_model(best_model, X_train, X_test, y_train, y_test)
+
+        if self.grid_search == True:    
+            best_model = self.search_model_params(X_train,y_train)
+            model_fit, results = self.train_evalute_model(best_model, X_train, X_test, y_train, y_test)
+        else:
+            model_fit, results = self.train_evalute_model(self.model, X_train, X_test, y_train, y_test)
+        
         self.save_model(model_fit, results)
