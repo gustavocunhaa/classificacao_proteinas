@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-class StructureModel(BaseModel):
+class LabFeatures(BaseModel):
     temperatura_cristalizacao_k: int
     contagem_residuos: int
     medida_de_resolucao: float

@@ -1,16 +1,19 @@
 from fastapi import FastAPI
-from structure_model import model_predict
-from schemas import StructureModel
+
+from schemas import LabFeatures
+from model.lab_feature import model_predict
+
 
 app = FastAPI()
 
 
 @app.get("/")
 async def root():
-    return "Structure model API service. Try /docs"
+    return "API predict models service. Try /docs"
 
-@app.post("/structure/")
-async def structure_model_predict(data: StructureModel):
+
+@app.post("/predict/lab/")
+async def lab_feature_model(data: LabFeatures):
     body = data.model_dump_json()
     response = model_predict(body)
     return response

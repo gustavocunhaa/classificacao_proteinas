@@ -1,13 +1,15 @@
 import os
 from pathlib import Path
-import pickle
+
 import json
+import pickle
+
 import pandas as pd
 from sklearn.preprocessing import minmax_scale
 
 
 ROOT_PATH  = os.getcwd()
-MODEL_PATH = Path(f"{ROOT_PATH}/src/structure_protein_model/model/structure_protein_classify_1720199724.pkl")
+MODEL_PATH = Path(f"{ROOT_PATH}/src/ml/model/lab_feature/model_1720537739.pkl")
 
 model = pickle.load(open(MODEL_PATH, 'rb'))
 
