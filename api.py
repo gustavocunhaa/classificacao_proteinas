@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
-from schemas import LabFeatures, SequenceFeatures
-from model.lab_feature      import model_predict as lab_predict
-from model.sequence_feature import model_predict as sequence_predict
+from app.schemas import LabFeatures, SequenceFeatures
+from app.model.lab_feature      import model_predict as lab_predict
+from app.model.sequence_feature import model_predict as sequence_predict
 
 app = FastAPI()
 
