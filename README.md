@@ -5,15 +5,15 @@ Repositório contendo o projeto de um pequeno data lake com um conjunto de dados
 > Dados disponíveis em -> https://www.kaggle.com/datasets/shahir/protein-data-set
 
 <div style="display: inline_block"><br>
-  <img align="center" alt="kaggle" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kaggle/kaggle-original-wordmark.svg">   
-  <img align="center" alt="python" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
-  <img align="center" alt="pandas" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg">
-  <img align="center" alt="aws" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg">
-  <img align="center" alt="s3" height="60" width="70" src="https://cdn.worldvectorlogo.com/logos/amazon-s3-simple-storage-service.svg">
-  <img align="center" alt="mysql" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg">
-  <img align="center" alt="sklearn" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg"> 
-  <img align="center" alt="fastapi" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original-wordmark.svg">
-  <img align="center" alt="streamlit" height="60" width="70" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg"> 
+  <img align="center" alt="kaggle" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kaggle/kaggle-original-wordmark.svg">   
+  <img align="center" alt="python" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg">
+  <img align="center" alt="pandas" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg">
+  <img align="center" alt="aws" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg">
+  <img align="center" alt="s3" height="50" width="60" src="https://cdn.worldvectorlogo.com/logos/amazon-s3-simple-storage-service.svg">
+  <img align="center" alt="mysql" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg">
+  <img align="center" alt="sklearn" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/scikitlearn/scikitlearn-original.svg"> 
+  <img align="center" alt="fastapi" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original-wordmark.svg">
+  <img align="center" alt="streamlit" height="50" width="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg"> 
 </div>       
 
 
@@ -60,12 +60,19 @@ A API foi desenvolvida utilizando o framework do FastAPI, pois é de fácil uso 
 
  Iniciando o serviço de API localmente da pasta root do proejto:
 ``` cmd:
-fastapi dev app/endpoint.py
+fastapi dev api.py
 ```
+
+☁️ Deploy da API foi feito utilizando plano free do [Render](https://render.com/)
+
+> URL: https://classificacao-proteinas.onrender.com/docs
+
 
 # Comparativo entre input dos modelos
 
-Como experimento, dois modelos com o mesmo target foram treinados, porém com inputs diferentes. A diferença entre os dois modelos em perfôrmance mostra que a combinação input + modelo sempre seŕa mais assertiva com base na necessidade e nos detalhes do dataset. Não existe "bala de prata" que resolva um problema de ML.  
+Como experimento, dois modelos com o mesmo target foram treinados, porém com inputs diferentes. 
+
+A diferença entre os dois modelos em perfôrmance mostra como que a qualidade dos dados de input refletem na qualidade dos outputs previstos. Não existe "bala de prata" que resolva todos os problema possíveis de ML.
 
 - lab_feature : O modelo recebeu como input os dados de testes e parâmetros físico químicos da macromolécula.
 - sequence_feature: O modelo recebeu aqui a sequência da macromolécula, especificando as 5 primeiras bases.
