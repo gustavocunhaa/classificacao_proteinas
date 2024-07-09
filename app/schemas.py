@@ -7,3 +7,6 @@ class LabFeatures(BaseModel):
     peso_molecular: float
     ph: float
     densidade_percentual_solucao: float
+
+class SequenceFeatures(BaseModel):
+    sequencia: str
