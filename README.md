@@ -1,6 +1,6 @@
 # 🧬 Protein Data Bank
 
-Repositório contendo o projeto de um pequeno data lake com um conjunto de dados sobre proteínas, disponibilizados pelo https://www.rcsb.org/.
+Repositório contendo o projeto de um data lake com um conjunto de dados sobre proteínas, para utilização dos dados na construção de modelos de Machine de Learning.
 
 > Dados disponíveis em -> https://www.kaggle.com/datasets/shahir/protein-data-set
 
