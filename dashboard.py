@@ -82,6 +82,7 @@ if selected == "Home":
                 barmode='group',
                 color_discrete_sequence=px.colors.qualitative.Prism,
                 title='Models metrics', 
+                text_auto=True,
                 range_y=[0, 1])
     st.plotly_chart(fig, use_container_width=True)
 
