@@ -58,14 +58,13 @@ Repositório contendo o projeto de um pequeno data lake com um conjunto de dados
 
 A API foi desenvolvida utilizando o framework do FastAPI, pois é de fácil uso e agrega algumas funcionalidades de forma automática, como é o caso da documentação dos endpoints.
 
- Iniciando o serviço de API localmente da pasta root do proejto:
+ Iniciando o serviço de API localmente da pasta raiz do proejto:
 ``` cmd:
 fastapi dev api.py
 ```
-
 ☁️ Deploy da API foi feito utilizando plano free do [Render](https://render.com/)
 
-> URL: https://classificacao-proteinas.onrender.com/docs
+> https://classificacao-proteinas.onrender.com/docs
 
 
 # Comparativo entre input dos modelos
@@ -75,4 +74,17 @@ Como experimento, dois modelos com o mesmo target foram treinados, porém com in
 A diferença entre os dois modelos em perfôrmance mostra como que a qualidade dos dados de input refletem na qualidade dos outputs previstos. Não existe "bala de prata" que resolva todos os problema possíveis de ML.
 
 - lab_feature : O modelo recebeu como input os dados de testes e parâmetros físico químicos da macromolécula.
-- sequence_feature: O modelo recebeu aqui a sequência da macromolécula, especificando as 5 primeiras bases.
+- sequence_feature: O modelo recebeu como input a sequência da macromolécula.
+
+Resultados:
+
+![model](./docs/img/model_newplot.png)
+
+
+ Iniciando o painel de visualização localmente da pasta raiz do proejto:
+``` cmd:
+streamlit run dashboard.py
+```
+☁️ Deploy utilizando a própria infra disponibilizada pelo [Streamlit](https://share.streamlit.io/deploy)
+
+> https://gustavocunhaa-classificacaoproteinas.streamlit.app
