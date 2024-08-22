@@ -2,8 +2,6 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-import pandas as pd
-from sklearn.preprocessing import minmax_scale
 from sklearn.tree import DecisionTreeClassifier
 
 from utils.database_read import ReadDatabase
@@ -50,15 +48,12 @@ df = ReadDatabase(
 ).run()
 
 features = df.drop(columns=['y'])
-x = pd.DataFrame(
-    minmax_scale(features, (0,1)),
-    columns=features.columns.to_list()
-)
+target = df['y']
 
 TrainTestModel(
     model_name=model_name,
-    x=x,
-    y=df[target],
+    x=features,
+    y=target,
     test_size=test_size,
     grid_search=True,
     model_params=param_grid,

@@ -5,19 +5,11 @@ import json
 import pickle
 
 import pandas as pd
-from sklearn.preprocessing import minmax_scale
-
 
 ROOT_PATH  = os.getcwd()
 MODEL_PATH = Path(f"{ROOT_PATH}/src/ml/model/lab_feature/model_1720537739.pkl")
 
 model = pickle.load(open(MODEL_PATH, 'rb'))
-
-def normalize_data(data: dict):
-    df = pd.DataFrame(json.loads(data), index=[0])
-    norm = minmax_scale(df, (0,1))
-    x = pd.DataFrame(norm, columns=df.columns.to_list())
-    return x
 
 def clasify_structure(id_structure: int):
     if id_structure == 0:
@@ -31,7 +23,7 @@ def clasify_structure(id_structure: int):
     return structure
 
 def model_predict(body: dict):
-    x = normalize_data(body)
+    x = pd.DataFrame(json.loads(body), index=[0])
     predict = model.predict(x)[0]
     
     response = {
